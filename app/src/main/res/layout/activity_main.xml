@@ -6,12 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <ListView
-       android:id="@+id/lista"
+   <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       app:layout_editor_absoluteX="1dp"
-       app:layout_editor_absoluteY="1dp"
-       />
+       android:orientation="vertical"
+
+      >
+      <androidx.appcompat.widget.Toolbar
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/toolbar"
+          android:background="@color/blue"
+          android:paddingEnd="15sp"
+          >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/app_name"
+             android:layout_gravity="start"
+             android:textStyle="bold"
+             android:textSize="20sp"
+             android:textColor="@color/white"
+             />
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/configuracion"
+             android:backgroundTint="@color/red"
+             android:drawableLeft="@drawable/baseline_settings_24"
+             android:text="@string/configuracion"
+             android:textColor="@color/white"
+             android:layout_gravity="end"
+             />
+      </androidx.appcompat.widget.Toolbar>
+
+      <ListView
+          android:id="@+id/lista"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layout_editor_absoluteX="1dp"
+          app:layout_editor_absoluteY="1dp"
+          />
+   </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
