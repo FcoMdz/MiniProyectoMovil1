@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.ViewLists" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/launch_screen</item>
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="android:buttonTint">@color/red</item>
+        <item name="android:windowBackground">@color/blue_pastel</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
