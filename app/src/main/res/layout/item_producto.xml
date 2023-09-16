@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:rowCount="3"
     android:columnCount="2"
     android:orientation="horizontal"
@@ -20,39 +20,104 @@
             tools:srcCompat="@tools:sample/avatars"
             android:layout_column="0"
             android:layout_rowSpan="2"
-            android:layout_columnWeight="0"
-            android:layout_rowWeight="0"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
             />
-
         <TextView
             android:id="@+id/nombre"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Nombre"
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_columnWeight="0"
-            android:layout_rowWeight="0"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
             android:textAlignment="center"
             android:layout_gravity="center"
             />
-
-        <TextView
-            android:id="@+id/precio"
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Autor"
-            android:textColor="#020202"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/nombre"
-            android:layout_columnWeight="0"
-            android:layout_rowWeight="0"
-            android:textAlignment="center"
             android:layout_gravity="center"
-            />
+            android:layout_columnWeight="2"
+            android:layout_rowWeight="1"
+            android:layout_columnSpan="1"
+
+            >
+                <LinearLayout android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                    android:layout_marginHorizontal="5sp">
+                        <ImageView
+                            android:id="@+id/TimageView1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars"
+                            />
+                        <TextView
+                            android:id="@+id/Tprecio1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Autor"
+                            android:textColor="#020202"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/nombre"
+                            />
+                </LinearLayout>
+                <LinearLayout android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="5sp">
+                        <ImageView
+                            android:id="@+id/TimageView2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars"
+                            />
+                        <TextView
+                            android:id="@+id/Tprecio2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Autor"
+                            android:textColor="#020202"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/nombre"
+                            />
+                </LinearLayout>
+                <LinearLayout android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="5sp">
+
+                        <ImageView
+                            android:id="@+id/TimageView3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars"
+                            />
+                        <TextView
+                            android:id="@+id/Tprecio3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Autor"
+                            android:textColor="#020202"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/nombre"
+                            />
+                </LinearLayout>
+        </LinearLayout>
+
+
+
+
 
 
 </GridLayout>
