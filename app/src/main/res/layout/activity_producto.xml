@@ -21,26 +21,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/precio_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <ListView
+        android:id="@+id/Tlista"
+        android:layout_width="385dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:text="Autor"
-        android:textColor="#2C2C2C"
+        android:gravity="center_vertical|center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_producto" />
+        app:layout_constraintTop_toBottomOf="@+id/detalles_producto"/>
 
     <TextView
         android:id="@+id/detalles_producto"
         android:layout_width="298dp"
-        android:layout_height="261dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="63dp"
         android:text="Detalles"
         android:textAlignment="center"
         android:textColor="#191919"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
