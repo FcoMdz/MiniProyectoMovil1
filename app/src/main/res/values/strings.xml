@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">proyecto 100% real no fake</string>
+    <string name="app_name">CyberPrecios</string>
+    <string name="bbEstudiante">Bienvenido, estudiante</string>
+    <string name="bbObrero">Bienvenido, obrero</string>
+    <string name="bbFuncionario">Bienvenido, funcionario</string>
+    <string name="title_activity_splash_screen">CyberPrecios</string>
+    <string name="configuracion">Ajustes</string>
+    <string name="quienes">¿Que rol ocupa?</string>
+    <string name="opcEstudiante">Estudiate</string>
+    <string name="opcObrero">Obrero</string>
+    <string name="opcFuncionario">Funcionario</string>
+    <string name="regresar">Regresar</string>
 </resources>

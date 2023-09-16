@@ -13,8 +13,10 @@
         android:theme="@style/Theme.ViewLists"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/Theme.ViewLists" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +24,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".ProductoActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.int ent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ConfiguracionActivity"
+            android:exported="true">
         </activity>
     </application>
 
