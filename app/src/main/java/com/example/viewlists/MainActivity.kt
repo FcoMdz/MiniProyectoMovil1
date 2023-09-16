@@ -191,9 +191,11 @@ class TiendaAdapter (private val mContext: Context, private val listaTienda: Lis
 
             val Tnombre = layout.findViewById<TextView>(R.id.Tnombre)
             val Tprecio = layout.findViewById<TextView>(R.id.Tprecio)
+            val TimageView = layout.findViewById<ImageView>(R.id.TimageViewT)
             val Tienda = listaTienda[position]
             Tnombre.text = Tienda.Tnombre
             Tprecio.text = Tienda.Tprecio
+            TimageView.setImageResource(Tienda.Timg)
             return layout
         }
     }
