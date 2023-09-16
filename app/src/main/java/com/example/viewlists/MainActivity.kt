@@ -3,6 +3,7 @@ package com.example.viewlists
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +16,8 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.get
 import java.io.Serializable
 import android.content.SharedPreferences
 
@@ -23,15 +26,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var TiendaAux = Tienda("Zegucom", "10,000.00")
-        var TiendaAux2 = Tienda("Cyberpuerta", "11,000.00")
-        var TiendaAux3 = Tienda("Amazon", "10,500.00")
-        var producto = Producto("Procesador Intel i9 13900k",TiendaAux,TiendaAux2,TiendaAux3,"El REY de los mouse calidad-precio en el mercado",R.drawable.i913900k)
+        var TiendaAux = Tienda("Zegucom", "10,000.00", "https://www.zegucom.com.mx/producto/procesadores/procesadores-intel-socket-1700-13a-gen/procesador-intel-core-i9-13900k-lga-1700-cache-36-mb-nucleos-24-hilos/Qlg4MDcxNTEzOTAwSw==")
+        var TiendaAux2 = Tienda("Cyberpuerta", "11,419.00", "https://www.cyberpuerta.mx/Computo-Hardware/Componentes/Procesadores/Procesadores-para-PC/Procesador-Intel-Core-i9-13900K-S-1700-24-Core-36MB-36MB-Smart-Cache-13va-Generacion-Raptor-Lake.html?srsltid=AfmBOoq4bViojZJU6yOJaRTbWV7ysSut_MUyTWJh2R9ynrXMnA0lgDH_uW4")
+        var TiendaAux3 = Tienda("Amazon", "12,166.00", "https://www.amazon.com.mx/Intel-BX8071513900K/dp/B0BCF54SR1/ref=sr_1_1?keywords=intel%2Bi9%2B13900k&qid=1694885585&sr=8-1&ufe=app_do%3Aamzn1.fos.a9e70178-7411-4f75-8d83-e6796a165895&th=1")
+        var producto = Producto("Procesador Intel i9 13900k",TiendaAux,TiendaAux2,TiendaAux3,"El Procesador Intel Core i9-13900K es ideal para usuarios que requieren potencia informática extrema tanto en gaming como creación contenido profesional",R.drawable.i913900k)
         
-        TiendaAux = Tienda("Zegucom", "4,000.00")
-        TiendaAux2 = Tienda("Cyberpuerta", "5,000.00")
-        TiendaAux3 = Tienda("Amazon", "5,700.00")
-        val producto2 = Producto("Procesador intel i5 13600k",TiendaAux,TiendaAux2,TiendaAux3,"Gran mouse para el gaming casual",R.drawable.i513600k)
+        TiendaAux = Tienda("Zegucom", "4,000.00","https://www.zegucom.com.mx/producto/procesadores/procesadores-intel-socket-1700-12a-gen/procesador-intel-core-i5-12600k-12va-gen-socket-lga1700-4-90ghz-6-4-n/Qlg4MDcxNTEyNjAwSw==")
+        TiendaAux2 = Tienda("Cyberpuerta", "6,219.00","https://www.cyberpuerta.mx/Computo-Hardware/Componentes/Procesadores/Procesadores-para-PC/Procesador-Intel-Core-i5-13600K-S-1700-3-50GHz-14-Core-24MB-Smart-Cache-13va-Generacion-Raptor-Lake.html?srsltid=AfmBOopTRIIHiYKXckBnyDfAnZkUUqzsYCZAqDZGzRUn1u6cI9dSbpmDNDM")
+        TiendaAux3 = Tienda("Amazon", "6,551.00","https://www.amazon.com.mx/Intel-i5-13600K-LGA1700-Desktop-Processor/dp/B0BG63WLG3")
+        val producto2 = Producto("Procesador intel i5 13600k",TiendaAux,TiendaAux2,TiendaAux3,"El procesador Intel Core i5-13600K 3.50GHz 14-Core BX8071513600K es un componente de alta gama para equipos de escritorio y gaming.",R.drawable.i513600k)
         
         TiendaAux = Tienda("Zegucom", "4,329.00")
         TiendaAux2 = Tienda("Cyberpuerta", "4,309.00")
@@ -47,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         TiendaAux2 = Tienda("Cyberpuerta", "6,739.00")
         TiendaAux3 = Tienda("Amazon", "10,500.00")
         val producto5 = Producto("Procesador AMD Ryzen 9 7950X",TiendaAux,TiendaAux2,TiendaAux3,"Menos de 100g para mover ese mouse como un diablo",R.drawable.r7950x)
+
 
         val listaProductos = listOf(producto,producto2,producto3, producto4, producto5)
 
@@ -143,18 +147,29 @@ class ProductoActivity : AppCompatActivity(){
 
         val producto = intent.getSerializableExtra("producto") as Producto
         val nombre_producto: TextView = findViewById(R.id.nombre_producto)
-        val precio_producto: TextView = findViewById(R.id.precio_producto)
         val detalles_producto: TextView = findViewById(R.id.detalles_producto)
         val imagen: ImageView = findViewById(R.id.imagen)
         val listaTienda = listOf(producto.Tienda1,producto.Tienda2,producto.Tienda3)
         val TAdapter = TiendaAdapter(this, listaTienda)
+        val Tlista : ListView = findViewById(R.id.Tlista)
+        Tlista.adapter = TAdapter
+        Tlista.setOnItemClickListener{ parent, view, position, id ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(listaTienda[position].url))
+            if (listaTienda[position].url != "") {
+                startActivity(intent)
+            }
+            else{
+                // La URL no se pudo abrir, muestra un Toast de error
+                Toast.makeText(this, "Error al abrir la página web", Toast.LENGTH_SHORT).show()
+            }
+        }
         nombre_producto.text = producto.nombre
         detalles_producto.text = producto.descripcion
         imagen.setImageResource(producto.imagen)
     }
 }
 
-class Tienda (val Tnombre:String, val Tprecio:String): Serializable
+class Tienda (val Tnombre:String, val Tprecio:String, val url: String): Serializable
 
 class TiendaAdapter (private val mContext: Context, private val listaTienda: List<Tienda>) :
     ArrayAdapter <Tienda>(mContext, 0 , listaTienda) {
@@ -162,6 +177,9 @@ class TiendaAdapter (private val mContext: Context, private val listaTienda: Lis
             val layout = LayoutInflater.from(context).inflate(R.layout.item_tienda, parent, false)    
             val Tnombre = layout.findViewById<TextView>(R.id.Tnombre)
             val Tprecio = layout.findViewById<TextView>(R.id.Tprecio)
+            val Tienda = listaTienda[position]
+            Tnombre.text = Tienda.Tnombre
+            Tprecio.text = Tienda.Tprecio
             return layout
         }
     }
